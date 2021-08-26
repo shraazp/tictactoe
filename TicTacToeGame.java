@@ -320,7 +320,6 @@ public class TicTacToeGame {
 				if(board[corner[i]]==' ')
 					{board[corner[i]]=input_computer;
 					f=1;
-					
 					break;
 					}
 			}
@@ -334,7 +333,8 @@ public class TicTacToeGame {
 					for(int i=0;i<4;i++)
 					{
 						if(board[rem[i]]==' ')
-							{board[rem[i]]=input_computer;
+							{
+							board[rem[i]]=input_computer;
 							f=1;
 							break;
 							}
@@ -342,16 +342,38 @@ public class TicTacToeGame {
 				}
 			}
 		}
+    
+    public static void tictactoe()
+    {
+    	newGame();	
+		inputLetter();
+		showBoard();
+		toss();
+		while(t==0)
+		{
+			
+			if(turn=='c')
+			{
+				ComputerGame();
+				showBoard();
+				displayWinner();
+				turn='p';
+			}
+			else if(turn=='p') 
+			{
+				desiredLocation();
+				desiredMove();
+				displayWinner();
+				showBoard();
+				turn='c';
+				
+			}
+		}
+    }
 	//main function of the class TicTacToeGame
 	public static void main(String[] args) {
 		System.out.println("Welcome to 3x3 Tic Tac Toe.");
-		newGame();	
-		inputLetter();
-		showBoard();
-		desiredLocation();
-		desiredMove();
-		toss();
-		displayWinner();
-		ComputerGame();
+		
+		tictactoe();
 	}
 }
