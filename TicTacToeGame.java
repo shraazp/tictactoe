@@ -245,6 +245,102 @@ public class TicTacToeGame {
         }
         
 }
+    /*
+     * here computer is played 
+     * usecase 8,9,10 and 11
+     * first computer will check if it has any winnig oppurtunities if not computer will check blocking conditions to stop player from playing
+     * if both are not there it will check corner values if corner values filled then center value if that also filled it will fill remaining value
+     */
+    public static void ComputerGame()
+	{
+		System.out.println("Computer is playing!!!");
+		//winning conditions
+		if((board[1]==' ')&&(board[2]==board[3]&&board[2]==input_computer)||(board[4]==board[7]&&board[4]==input_computer)||(board[5]==board[9]&&board[5]==input_computer))
+					board[1]=input_computer;
+					
+		else if((board[2]==' ')&&(board[1]==board[3]&&board[3]==input_computer)||(board[5]==board[8]&&board[8]==input_computer))
+				board[2]=input_computer;
+		
+		else if((board[3]==' ')&&(board[1]==board[2]&&board[2]==input_computer)||(board[6]==board[9]&&board[9]==input_computer)||(board[5]==board[7]&&board[7]==input_computer))
+			board[3]=input_computer;
+			
+		else if((board[4]==' ')&&(board[1]==board[7]&&board[7]==input_computer)||(board[5]==board[6]&&board[6]==input_computer))
+				board[4]=input_computer;
+	
+		else if((board[5]==' ')&&(board[1]==board[9]&&board[1]==input_computer)||(board[7]==board[3]&&board[7]==input_computer)||(board[2]==board[8]&&board[8]==input_computer)||(board[4]==board[6]&&board[6]==input_computer))
+				board[5]=input_computer;
+	
+		else if((board[6]==' ')&&(board[9]==board[3]&&board[3]==input_computer)||(board[5]==board[4]&&board[4]==input_computer))
+				board[6]=input_computer;
+			
+		else 	if((board[7]==' ')&&(board[1]==board[4]&&board[4]==input_computer)||(board[8]==board[9]&&board[9]==input_computer)||(board[3]==board[5]&&board[5]==input_computer))
+				board[7]=input_computer;
+			
+		else if((board[8]==' ')&&(board[9]==board[7]&&board[7]==input_computer)||(board[2]==board[5]&&board[2]==input_computer))
+				board[8]=input_computer;
+			
+		else if((board[9]==' ')&&(board[1]==board[5]&&board[5]==input_computer)||(board[6]==board[3]&&board[3]==input_computer)||(board[8]==board[7]&&board[7]==input_computer))
+				board[9]=input_computer;
+		
+		//blocking conditions
+		else if((board[1]==' ')&&(board[2]==board[3]&&board[2]==input_player)||(board[4]==board[7]&&board[4]==input_player)||(board[5]==board[9]&&board[5]==input_player))
+				board[1]=input_computer;
+			
+		else if((board[2]==' ')&&(board[1]==board[3]&&board[3]==input_player)||(board[5]==board[8]&&board[8]==input_player))
+				board[2]=input_computer;
+		
+		else if((board[3]==' ')&&(board[1]==board[2]&&board[2]==input_player)||(board[6]==board[9]&&board[9]==input_player)||(board[5]==board[7]&&board[7]==input_player))
+				board[3]=input_computer;
+		
+		else if((board[4]==' ')&&(board[1]==board[7]&&board[7]==input_player)||(board[5]==board[6]&&board[6]==input_player))
+				board[4]=input_computer;
+
+		else if((board[5]==' ')&&(board[1]==board[9]&&board[1]==input_player)||(board[7]==board[3]&&board[7]==input_player)||(board[2]==board[8]&&board[8]==input_player)||(board[4]==board[6]&&board[6]==input_player))
+				board[5]=input_computer;
+	
+		else if((board[6]==' ')&&(board[9]==board[3]&&board[3]==input_player)||(board[5]==board[4]&&board[4]==input_player))
+				board[6]=input_computer;
+	
+		else if((board[7]==' ')&&(board[1]==board[4]&&board[4]==input_player)||(board[8]==board[9]&&board[9]==input_player)||(board[5]==board[3]&&board[3]==input_player))
+				board[7]=input_computer;
+
+		else if((board[8]==' ')&&(board[9]==board[7]&&board[7]==input_player)||(board[2]==board[5]&&board[2]==input_player))
+			board[8]=input_computer;
+		
+		else if((board[9]==' ')&&(board[1]==board[5]&&board[5]==input_player)||(board[6]==board[3]&&board[3]==input_player)||(board[8]==board[7]&&board[7]==input_player))
+			board[9]=input_computer;
+	
+		else
+			{
+			
+			int corner[]= {1,3,7,9};
+			int f=0;
+			for(int i=0;i<4;i++)
+			{
+				if(board[corner[i]]==' ')
+					{board[corner[i]]=input_computer;
+					f=1;
+					
+					break;
+					}
+			}
+			if(f==0 )
+				if(board[5]==' ')
+					board[5]=input_computer;
+				else
+				{
+					int rem[]= {2,4,6,8};
+					for(int i=0;i<4;i++)
+					{
+						if(board[rem[i]]==' ')
+							{board[rem[i]]=input_computer;
+							f=1;
+							break;
+							}
+					}
+				}
+			}
+		}
 	//main function of the class TicTacToeGame
 	public static void main(String[] args) {
 		System.out.println("Welcome to 3x3 Tic Tac Toe.");
@@ -255,5 +351,6 @@ public class TicTacToeGame {
 		desiredMove();
 		toss();
 		displayWinner();
+		ComputerGame();
 	}
 }
