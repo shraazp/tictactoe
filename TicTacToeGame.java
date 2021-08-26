@@ -14,16 +14,18 @@ public class TicTacToeGame {
 	public static Random rand=new Random();
 	
 	//@parameter input store whether the value is X or O
-	public static char input_player,input_computer;     
+	public static char input_player=' ',input_computer=' ';     
 	
 	//@parameter index to ask user where to mark x or o
-	public static int index;
+	public static int index=0;
 	
 	 /*@parameter turn to check whose turn to play
 	  * turn can be player and computer
 	  * turn=c means computer, turn=p means player 
 	  */
-	public static char turn; 
+	public static char turn=' '; 
+	public static int corner[]= {1,3,7,9};
+	public static int rem[]= {2,4,6,8};
 	
 	/*method for initializing the board
 	 * It will initialize the board values with space
@@ -203,7 +205,7 @@ public class TicTacToeGame {
 	            if (board[a1]==' ') {
 	               break;
 	            }
-        	} if(a1==9)
+        	} if(a1==10)
 	                return 'd';
         	else
         		return 'n';
@@ -214,6 +216,7 @@ public class TicTacToeGame {
     /**display the winning player or indicate a tie (or unfinished game).*/
     public static void displayWinner()
     {
+    	
     	
        char win=isWin();
         if(win==input_player)
@@ -231,18 +234,9 @@ public class TicTacToeGame {
         	System.out.println("It's a draw! Thanks for playing");
         	t=1;
         }
-        else if(win=='n')
-        {
-        	if (turn=='p') {
-                turn = 'c';
-                
-            }
-            else {
-                turn = 'p';
-               
-            }
+        
         	
-        }
+        
         
 }
     /*
@@ -255,100 +249,105 @@ public class TicTacToeGame {
 	{
 		System.out.println("Computer is playing!!!");
 		//winning conditions usecase 8
-		if((board[1]==' ')&&(board[2]==board[3]&&board[2]==input_computer)||(board[4]==board[7]&&board[4]==input_computer)||(board[5]==board[9]&&board[5]==input_computer))
+		if((board[1]==' ')&&((board[2]==board[3]&&board[2]==input_computer)||(board[4]==board[7]&&board[4]==input_computer)||(board[5]==board[9]&&board[5]==input_computer)))
 					board[1]=input_computer;
 					
-		else if((board[2]==' ')&&(board[1]==board[3]&&board[3]==input_computer)||(board[5]==board[8]&&board[8]==input_computer))
+		else if((board[2]==' ')&&((board[1]==board[3]&&board[3]==input_computer)||(board[5]==board[8]&&board[8]==input_computer)))
 				board[2]=input_computer;
 		
-		else if((board[3]==' ')&&(board[1]==board[2]&&board[2]==input_computer)||(board[6]==board[9]&&board[9]==input_computer)||(board[5]==board[7]&&board[7]==input_computer))
-			board[3]=input_computer;
+		else if((board[3]==' ')&&((board[1]==board[2]&&board[2]==input_computer)||(board[6]==board[9]&&board[9]==input_computer)||(board[5]==board[7]&&board[7]==input_computer)))
+				board[3]=input_computer;
 			
-		else if((board[4]==' ')&&(board[1]==board[7]&&board[7]==input_computer)||(board[5]==board[6]&&board[6]==input_computer))
+		else if((board[4]==' ')&&((board[1]==board[7]&&board[7]==input_computer)||(board[5]==board[6]&&board[6]==input_computer)))
 				board[4]=input_computer;
 	
-		else if((board[5]==' ')&&(board[1]==board[9]&&board[1]==input_computer)||(board[7]==board[3]&&board[7]==input_computer)||(board[2]==board[8]&&board[8]==input_computer)||(board[4]==board[6]&&board[6]==input_computer))
+		else if((board[5]==' ')&&((board[1]==board[9]&&board[1]==input_computer)||(board[7]==board[3]&&board[7]==input_computer)||(board[2]==board[8]&&board[8]==input_computer)||(board[4]==board[6]&&board[6]==input_computer)))
 				board[5]=input_computer;
 	
-		else if((board[6]==' ')&&(board[9]==board[3]&&board[3]==input_computer)||(board[5]==board[4]&&board[4]==input_computer))
+		else if((board[6]==' ')&&((board[9]==board[3]&&board[3]==input_computer)||(board[5]==board[4]&&board[4]==input_computer)))
 				board[6]=input_computer;
 			
-		else 	if((board[7]==' ')&&(board[1]==board[4]&&board[4]==input_computer)||(board[8]==board[9]&&board[9]==input_computer)||(board[3]==board[5]&&board[5]==input_computer))
+		else if((board[7]==' ')&&((board[1]==board[4]&&board[4]==input_computer)||(board[8]==board[9]&&board[9]==input_computer)||(board[3]==board[5]&&board[5]==input_computer)))
 				board[7]=input_computer;
 			
-		else if((board[8]==' ')&&(board[9]==board[7]&&board[7]==input_computer)||(board[2]==board[5]&&board[2]==input_computer))
+		else if((board[8]==' ')&&((board[9]==board[7]&&board[7]==input_computer)||(board[2]==board[5]&&board[2]==input_computer)))
 				board[8]=input_computer;
 			
-		else if((board[9]==' ')&&(board[1]==board[5]&&board[5]==input_computer)||(board[6]==board[3]&&board[3]==input_computer)||(board[8]==board[7]&&board[7]==input_computer))
+		else if((board[9]==' ')&&((board[1]==board[5]&&board[5]==input_computer)||(board[6]==board[3]&&board[3]==input_computer)||(board[8]==board[7]&&board[7]==input_computer)))
 				board[9]=input_computer;
 		
 		//blocking conditions usecase9
-		else if((board[1]==' ')&&(board[2]==board[3]&&board[2]==input_player)||(board[4]==board[7]&&board[4]==input_player)||(board[5]==board[9]&&board[5]==input_player))
+		else if((board[1]==' ')&&((board[2]==board[3]&&board[2]==input_player)||(board[4]==board[7]&&board[4]==input_player)||(board[5]==board[9]&&board[5]==input_player)))
 				board[1]=input_computer;
 			
-		else if((board[2]==' ')&&(board[1]==board[3]&&board[3]==input_player)||(board[5]==board[8]&&board[8]==input_player))
+		else if((board[2]==' ')&&((board[1]==board[3]&&board[3]==input_player)||(board[5]==board[8]&&board[8]==input_player)))
 				board[2]=input_computer;
 		
-		else if((board[3]==' ')&&(board[1]==board[2]&&board[2]==input_player)||(board[6]==board[9]&&board[9]==input_player)||(board[5]==board[7]&&board[7]==input_player))
+		else if((board[3]==' ')&&((board[1]==board[2]&&board[2]==input_player)||(board[6]==board[9]&&board[9]==input_player)||(board[5]==board[7]&&board[7]==input_player)))
 				board[3]=input_computer;
 		
-		else if((board[4]==' ')&&(board[1]==board[7]&&board[7]==input_player)||(board[5]==board[6]&&board[6]==input_player))
+		else if((board[4]==' ')&&((board[1]==board[7]&&board[7]==input_player)||(board[5]==board[6]&&board[6]==input_player)))
 				board[4]=input_computer;
 
-		else if((board[5]==' ')&&(board[1]==board[9]&&board[1]==input_player)||(board[7]==board[3]&&board[7]==input_player)||(board[2]==board[8]&&board[8]==input_player)||(board[4]==board[6]&&board[6]==input_player))
+		else if((board[5]==' ')&&((board[1]==board[9]&&board[1]==input_player)||(board[7]==board[3]&&board[7]==input_player)||(board[2]==board[8]&&board[8]==input_player)||(board[4]==board[6]&&board[6]==input_player)))
 				board[5]=input_computer;
 	
-		else if((board[6]==' ')&&(board[9]==board[3]&&board[3]==input_player)||(board[5]==board[4]&&board[4]==input_player))
+		else if((board[6]==' ')&&((board[9]==board[3]&&board[3]==input_player)||(board[5]==board[4]&&board[4]==input_player)))
 				board[6]=input_computer;
 	
-		else if((board[7]==' ')&&(board[1]==board[4]&&board[4]==input_player)||(board[8]==board[9]&&board[9]==input_player)||(board[5]==board[3]&&board[3]==input_player))
+		else if((board[7]==' ')&&((board[1]==board[4]&&board[4]==input_player)||(board[8]==board[9]&&board[9]==input_player)||(board[5]==board[3]&&board[3]==input_player)))
 				board[7]=input_computer;
 
-		else if((board[8]==' ')&&(board[9]==board[7]&&board[7]==input_player)||(board[2]==board[5]&&board[2]==input_player))
-			board[8]=input_computer;
+		else if((board[8]==' ')&&((board[9]==board[7]&&board[7]==input_player)||(board[2]==board[5]&&board[2]==input_player)))
+				board[8]=input_computer;
 		
-		else if((board[9]==' ')&&(board[1]==board[5]&&board[5]==input_player)||(board[6]==board[3]&&board[3]==input_player)||(board[8]==board[7]&&board[7]==input_player))
-			board[9]=input_computer;
+		else if((board[9]==' ')&&((board[1]==board[5]&&board[5]==input_player)||(board[6]==board[3]&&board[3]==input_player)||(board[8]==board[7]&&board[7]==input_player)))
+				board[9]=input_computer;
 	
 		else
 			{
 			//checking for corner values usecase10
-			int corner[]= {1,3,7,9};
+			
 			int f=0;
 			for(int i=0;i<4;i++)
 			{
 				if(board[corner[i]]==' ')
-					{board[corner[i]]=input_computer;
+					{
+					board[corner[i]]=input_computer;
 					f=1;
 					break;
 					}
 			}
 			//checking for center and remaining values usecase11
 			if(f==0 )
+				{
 				if(board[5]==' ')
 					board[5]=input_computer;
 				else
 				{
-					int rem[]= {2,4,6,8};
+					
 					for(int i=0;i<4;i++)
 					{
 						if(board[rem[i]]==' ')
 							{
 							board[rem[i]]=input_computer;
-							f=1;
 							break;
 							}
 					}
 				}
 			}
 		}
-    
+		}
+    /*
+     * usecase12 repeat till game is over
+     */
     public static void tictactoe()
     {
     	newGame();	
 		inputLetter();
 		showBoard();
 		toss();
+		
 		while(t==0)
 		{
 			
@@ -374,13 +373,18 @@ public class TicTacToeGame {
 	public static void main(String[] args) {
 		System.out.println("Welcome to 3x3 Tic Tac Toe.");
 		tictactoe();
+		//usecase13 to initialize another game
 		System.out.println("If you want to restart game press 1");
 		int choice=0;
 		choice=sc.nextInt();
 		if(choice==1)
+			{
+			t=0;
 			tictactoe();
+			
+			}
 		else
-			System.out.println("Have a nice day!!!");
+			System.exit(0);
 		
 	}
 }
