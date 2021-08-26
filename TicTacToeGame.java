@@ -85,6 +85,27 @@ public class TicTacToeGame {
 			desiredLocation();
 		}	
 	}
+	
+	/*@method moves to desired location
+	 * checks if the space is free
+	 * ability to make a move for desired location
+	 * UseCase 5
+	 */
+	public static void desiredMove()
+	{
+		
+		if(board[index]==' ')					//check if index is free
+		{
+			board[index]=input_player;
+		}
+		else
+			{
+				System.out.println("Please enter different index current one is already filled!!!");
+				desiredLocation();					//@call desired location method
+				desiredMove();
+			}
+		
+	}
 	//main function of the class TicTacToeGame
 	public static void main(String[] args) {
 		System.out.println("Welcome to 3x3 Tic Tac Toe.");
@@ -92,5 +113,6 @@ public class TicTacToeGame {
 		inputLetter();
 		showBoard();
 		desiredLocation();
+		desiredMove();
 	}
 }
