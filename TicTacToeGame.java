@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class TicTacToeGame {
@@ -7,6 +8,9 @@ public class TicTacToeGame {
 	
 	//@array to store board values
 	public static char[] board= new char[10];  
+	
+	//to get a random value random class is used
+	public static Random rand=new Random();
 	
 	//@parameter input store whether the value is X or O
 	public static char input_player,input_computer;     
@@ -104,6 +108,33 @@ public class TicTacToeGame {
 				desiredLocation();					//@call desired location method
 				desiredMove();
 			}
+		
+	}
+	/*@method does a toss to check who plays first
+	 * random number is used to check for head and tail
+	 * UseCase 6
+	 */
+	public static void toss()
+	{
+		System.out.println("Player do you want to choose head(0) or tail(1)!!");
+		int choice=sc.nextInt();							//class member for storing choice of the player
+		/* a random number is chosen between 1 or 0
+		 * if its 0 then head or if it is 1 its tail
+		 */
+		int randnum=rand.nextInt(2);						
+		if(choice==randnum)
+		{
+			System.out.println("Its player's turn!!!");
+			turn='p';
+			
+			
+		}
+		else
+		{
+			System.out.println("Its computer's turn!!!");
+			turn='c';
+			
+		}
 		
 	}
 	//main function of the class TicTacToeGame
