@@ -373,7 +373,14 @@ public class TicTacToeGame {
 	//main function of the class TicTacToeGame
 	public static void main(String[] args) {
 		System.out.println("Welcome to 3x3 Tic Tac Toe.");
-		
 		tictactoe();
+		System.out.println("If you want to restart game press 1");
+		int choice=0;
+		choice=sc.nextInt();
+		if(choice==1)
+			tictactoe();
+		else
+			System.out.println("Have a nice day!!!");
+		
 	}
 }
