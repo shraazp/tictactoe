@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class TicTacToeGame {
 
+	private static int t=0; //for repeating the game
 	//To get input from the console
 	public static Scanner sc=new Scanner(System.in);
 	
@@ -17,6 +18,12 @@ public class TicTacToeGame {
 	
 	//@parameter index to ask user where to mark x or o
 	public static int index;
+	
+	 /*@parameter turn to check whose turn to play
+	  * turn can be player and computer
+	  * turn=c means computer, turn=p means player 
+	  */
+	public static char turn; 
 	
 	/*method for initializing the board
 	 * It will initialize the board values with space
@@ -137,6 +144,107 @@ public class TicTacToeGame {
 		}
 		
 	}
+	/*@method to check for winner
+	 * it checks if there is xxx or ooo in horizontal and vertical or diagonal directional
+	 * if there exists then there is a winner
+	 * later its iterated through board to check if all values are filled if yes then draw
+	 * or else next person plays
+	 * UseCase 7
+	 */
+	
+	public static  char isWin()
+    {
+		 String line = null;
+            
+		//to check if there is an winning situation
+        for (int a = 1; a < 10; a++) 
+        {
+           
+            switch (a) {
+            case 1:
+                line = ""+board[1] + board[2] + board[3];
+                break;
+            case 2:
+                line = ""+board[4] + board[5] + board[6];
+                break;
+            case 3:
+                line = ""+board[7] + board[8] + board[9];
+                break;
+            case 4:
+                line = ""+board[1] + board[4] + board[7];
+                break;
+            case 5:
+                line = ""+board[2] + board[5] + board[8];
+                break;
+            case 6:
+                line = ""+board[3] + board[6] + board[9];
+                break;
+            case 7:
+                line = ""+board[1] + board[5] + board[9];
+                break;
+            case 8:
+                line = ""+board[3] + board[5] + board[7];
+                break;
+            }
+        //For X winner
+        if (line.equals("XXX")) {
+            return 'X';
+        }
+          
+        // For O winner
+        else if (line.equals("OOO")) {
+            return  'O';
+        }
+        }
+        int a1;
+        	
+        	for (a1 = 1; a1 < 10; a1++) {
+        	
+	            if (board[a1]==' ') {
+	               break;
+	            }
+        	} if(a1==9)
+	                return 'd';
+        	else
+        		return 'n';
+    }
+			
+       
+      
+    /**display the winning player or indicate a tie (or unfinished game).*/
+    public static void displayWinner()
+    {
+    	
+       char win=isWin();
+        if(win==input_player)
+        {
+        	System.out.println("Congratulations!!!! You have won the game");
+        	t=1;
+        }
+        else if(win==input_computer)
+        	{
+        		System.out.println("Sorry!!!Computere has won the game");
+        		t=1;
+        	}
+        else if(win=='d')
+        {
+        	System.out.println("It's a draw! Thanks for playing");
+        	t=1;
+        }
+        else if(win=='n')
+        {
+        	if (turn=='p') {
+                turn = 'c';
+                
+            }
+            else {
+                turn = 'p';
+               
+            }
+        	
+        }
+        
+}
 	//main function of the class TicTacToeGame
 	public static void main(String[] args) {
 		System.out.println("Welcome to 3x3 Tic Tac Toe.");
@@ -145,5 +253,7 @@ public class TicTacToeGame {
 		showBoard();
 		desiredLocation();
 		desiredMove();
+		toss();
+		displayWinner();
 	}
 }
