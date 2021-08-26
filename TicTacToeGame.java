@@ -312,7 +312,7 @@ public class TicTacToeGame {
 	
 		else
 			{
-			//checking for corner values
+			//checking for corner values usecase10
 			int corner[]= {1,3,7,9};
 			int f=0;
 			for(int i=0;i<4;i++)
@@ -324,6 +324,7 @@ public class TicTacToeGame {
 					break;
 					}
 			}
+			//checking for center and remaining values usecase11
 			if(f==0 )
 				if(board[5]==' ')
 					board[5]=input_computer;
