@@ -254,7 +254,7 @@ public class TicTacToeGame {
     public static void ComputerGame()
 	{
 		System.out.println("Computer is playing!!!");
-		//winning conditions
+		//winning conditions usecase 8
 		if((board[1]==' ')&&(board[2]==board[3]&&board[2]==input_computer)||(board[4]==board[7]&&board[4]==input_computer)||(board[5]==board[9]&&board[5]==input_computer))
 					board[1]=input_computer;
 					
@@ -282,7 +282,7 @@ public class TicTacToeGame {
 		else if((board[9]==' ')&&(board[1]==board[5]&&board[5]==input_computer)||(board[6]==board[3]&&board[3]==input_computer)||(board[8]==board[7]&&board[7]==input_computer))
 				board[9]=input_computer;
 		
-		//blocking conditions
+		//blocking conditions usecase9
 		else if((board[1]==' ')&&(board[2]==board[3]&&board[2]==input_player)||(board[4]==board[7]&&board[4]==input_player)||(board[5]==board[9]&&board[5]==input_player))
 				board[1]=input_computer;
 			
