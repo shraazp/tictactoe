@@ -11,6 +11,9 @@ public class TicTacToeGame {
 	//@parameter input store whether the value is X or O
 	public static char input_player,input_computer;     
 	
+	//@parameter index to ask user where to mark x or o
+	public static int index;
+	
 	/*method for initializing the board
 	 * It will initialize the board values with space
 	 * Use case 1 :create a new board game and initialize the values to ' '
@@ -65,11 +68,29 @@ public class TicTacToeGame {
                            + " |");							//display third row
         System.out.println("|---|---|---|");
 	}
+	
+	/*@method selects the index from 1 to 9 
+	 * stores the user input in desired location in the board
+	 * check whether index is between 1 and 9
+	 * UseCase 4
+	 */
+	public static void desiredLocation()
+	{
+		System.out.println("Player is playing!!");
+		System.out.println("Please enter the index where you want to mark!!");
+		index=sc.nextInt();
+		if(index<1 || index>9)					//check if index is between 1 and 9
+		{
+			System.out.println("Please enter the index value between 1 and 9!!");
+			desiredLocation();
+		}	
+	}
 	//main function of the class TicTacToeGame
 	public static void main(String[] args) {
 		System.out.println("Welcome to 3x3 Tic Tac Toe.");
 		newGame();	
 		inputLetter();
 		showBoard();
+		desiredLocation();
 	}
 }
