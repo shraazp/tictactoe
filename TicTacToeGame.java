@@ -312,7 +312,7 @@ public class TicTacToeGame {
 	
 		else
 			{
-			
+			//checking for corner values
 			int corner[]= {1,3,7,9};
 			int f=0;
 			for(int i=0;i<4;i++)
