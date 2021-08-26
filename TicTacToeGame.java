@@ -45,10 +45,31 @@ public class TicTacToeGame {
 				}
 		
 	}
+	
+	/*@method to display the contents of board in table format
+	 * use case 3
+	 */
+	public static void showBoard()
+	{
+		System.out.println("|---|---|---|");
+        System.out.println("| " + board[1] + " | "
+                           + board[2] + " | " + board[3]
+                           + " |");							//display first row
+        System.out.println("|-----------|");
+        System.out.println("| " + board[4] + " | "
+                           + board[5] + " | " + board[6]
+                           + " |");							//display second row
+        System.out.println("|-----------|");
+        System.out.println("| " + board[7] + " | "
+                           + board[8] + " | " + board[9]
+                           + " |");							//display third row
+        System.out.println("|---|---|---|");
+	}
 	//main function of the class TicTacToeGame
 	public static void main(String[] args) {
 		System.out.println("Welcome to 3x3 Tic Tac Toe.");
 		newGame();	
 		inputLetter();
+		showBoard();
 	}
 }
